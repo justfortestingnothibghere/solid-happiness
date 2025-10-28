@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Admin Panel</h1>
+<h2>Add New Video</h2>
+<form method="POST" enctype="multipart/form-data">
+    <input name="name" placeholder="Name (unique slug)" required><br>
+    <input name="title" placeholder="Title" required><br>
+    <input name="description" placeholder="Description" required><br>
+    <input type="file" name="video" accept="video/*" required><br>
+    <button name="add_video">Add Video</button>
+</form>
+<h2>Manage Videos</h2>
+<ul>
+    {% for video in videos %}
+    <li>
+        {{ video.title }} - {{ video.description }}
+        <form method="POST" action="{{ url_for('edit', video_id=video.id) }}" style="display:inline;">
+            <input name="title" value="{{ video.title }}" size="10">
+            <input name="description" value="{{ video.description }}" size="20">
+            <button>Edit</button>
+        </form>
+        <form method="POST" action="{{ url_for('delete', video_id=video.id) }}" style="display:inline;" onsubmit="return confirm('Delete?')">
+            <button>Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('index') }}">Home</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Video Platform</h1>
+<ul>
+    {% for video in videos %}
+    <li><a href="{{ url_for('watch', video_id=video.id) }}">{{ video.title }}</a> - {{ video.description }}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('admin') }}">Admin Panel</a>
+{% endblock %}

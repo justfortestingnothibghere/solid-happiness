@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ video.title }}</h1>
+<p>{{ video.description }}</p>
+<video width="100%" height="auto" controls>
+    <source src="{{ video_url }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<br><a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}

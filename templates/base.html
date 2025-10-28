@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Video Platform</title>
+<style>body { font-family: Arial; margin: 20px; } video { max-width: 100%; } form { margin: 10px 0; } input, button { margin: 5px; padding: 5px; }</style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+</html>
